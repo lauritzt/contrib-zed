@@ -1348,7 +1348,9 @@
       // 5. Never show the scrollbar:
       //    "never"
       "show": null
-    }
+    },
+    // Sets whether to display intense colors in a bold font in the terminal.
+    "intense_color_bold_font": true
     // Set the terminal's font size. If this option is not included,
     // the terminal will default to matching the buffer's font size.
     // "font_size": 15,
@@ -1365,6 +1367,7 @@
     // Default: 10_000, maximum: 100_000 (all bigger values set will be treated as 100_000), 0 disables the scrolling.
     // Existing terminals will not pick up this change until they are recreated.
     // "max_scroll_history_lines": 10000,
+    //
   },
   "code_actions_on_format": {},
   // Settings related to running tasks.

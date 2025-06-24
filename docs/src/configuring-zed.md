@@ -2585,7 +2585,8 @@ List of `integer` column numbers
     "working_directory": "current_project_directory",
     "scrollbar": {
       "show": null
-    }
+    },
+    "intense_color_bold_font": true
   }
 }
 ```
@@ -2759,6 +2760,24 @@ See Buffer Font Features
       "calt": false
       // See Buffer Font Features for more features
     }
+  }
+}
+```
+
+### Terminal: Display intense colors in bold font
+
+- Description: Whether to display intense colors in a bold font in the terminal.
+- Setting: `intense_color_bold_font`
+- Default: `true`
+
+**Options**
+
+`boolean` values
+
+```json
+{
+  "terminal": {
+    "option_as_meta": true
   }
 }
 ```

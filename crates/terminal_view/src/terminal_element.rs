@@ -287,7 +287,7 @@ impl TerminalElement {
                     if !is_blank(&cell) {
                         let cell_text = cell.c.to_string();
                         let cell_style =
-                            TerminalElement::cell_style(&cell, fg, theme, text_style, hyperlink);
+                            TerminalElement::cell_style(&cell, fg, theme, text_style, hyperlink, cx);
 
                         let layout_cell = text_system.shape_line(
                             cell_text.into(),
@@ -346,6 +346,7 @@ impl TerminalElement {
         colors: &Theme,
         text_style: &TextStyle,
         hyperlink: Option<(HighlightStyle, &RangeInclusive<AlacPoint>)>,
+        cx: &App
     ) -> TextRun {
         let flags = indexed.cell.flags;
         let mut fg = convert_color(&fg, colors);
@@ -371,7 +372,9 @@ impl TerminalElement {
                 thickness: Pixels::from(1.0),
             });
 
-        let weight = if flags.intersects(Flags::BOLD) {
+        let weight = if flags.intersects(Flags::BOLD)
+            && TerminalSettings::get_global(cx).intense_color_bold_font
+        {
             FontWeight::BOLD
         } else {
             text_style.font_weight

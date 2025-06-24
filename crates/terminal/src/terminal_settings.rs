@@ -10,6 +10,7 @@ use serde_derive::{Deserialize, Serialize};
 use settings::{SettingsJsonSchemaParams, SettingsSources, add_references_to_properties};
 use std::path::PathBuf;
 use task::Shell;
+use util::serde::default_true;
 
 #[derive(Copy, Clone, Debug, Serialize, Deserialize, JsonSchema, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
@@ -48,6 +49,11 @@ pub struct TerminalSettings {
     pub max_scroll_history_lines: Option<usize>,
     pub toolbar: Toolbar,
     pub scrollbar: ScrollbarSettings,
+    /// Whether to display intense colors in a bold font in the terminal.
+    /// 
+    /// Default: true
+    #[serde(default = "default_true")]
+    pub intense_color_bold_font: bool,
 }
 
 #[derive(Copy, Clone, Debug, Serialize, Deserialize, JsonSchema, PartialEq, Eq)]
